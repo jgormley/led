@@ -2,6 +2,7 @@
 import time
 import board
 import neopixel
+import sys
 
 
 # Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
@@ -159,4 +160,19 @@ def printGrid():
         for x in range(16):
             row += (f'{grid[x][y]:4}')
         print(row)
+
+
+
+# handle the command line params
+
+if (len(sys.argv[1]) > 1):
+    command = sys.argv[1]
+    if command == 'clear': 
+        clear()
+    elif command == 'flag':
+        flag()
+    elif command == 'spiral':
+        spiral()
+    elif command == 'diagonal':
+        diagonal()
 
