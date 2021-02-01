@@ -11,7 +11,7 @@ Status:
 * Port forwarding on router
 
 TODO:
-* Connect smart home to the Express/Node server -- either via IFTTT or Google local
+* Connect smart home to the Express/Node server -- either via IFTTT or Google local or some other method (maybe Zapier)
 * Clean up JS code, I hacked in a global variable to track whether a script was running.  I could either switch to sync calls, or be more elegant about handling state.  I did this because calling the python script multiple times puts it in a bad state and requires me to kill the processes
 * Add ability to pass in params to the python script
 * Add more visuals
@@ -45,6 +45,8 @@ Resources
 * https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - I'm new to Fetch, but it seems pretty straightforward
   * https://www.freecodecamp.org/news/a-practical-es6-guide-on-how-to-perform-http-requests-using-the-fetch-api-594c3d91a547/
 * https://www.duckdns.org/domains - dynamic DNS
+* https://zapier.com/apps/amazon-alexa/integrations/webhook -- alternative to IFTTT
+* https://ifttt.com -- if this then that -- now requires paid membership when you have more than 3 applets
 
 Commands
 * sudo DEBUG=led:* npm start
@@ -53,3 +55,4 @@ Commands
 
 Notes
 * Had to upgrade node on the raspberry pi, used n 
+* IFTTT is free for only 3 scriptlets and I'm struggling to get the first one to work.  It's not passing the json body correctly

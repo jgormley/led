@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   const script = path.join(__dirname, '../python/led_utils.py');
+  console.log('req.body: ', req.body);
   const pythonProcess = spawn('python3',[script, req.body.command]);
 
   pythonProcess.stdout.on('data', (data) => {
