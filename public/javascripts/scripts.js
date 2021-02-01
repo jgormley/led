@@ -3,6 +3,42 @@
 // and requires killing the process
 var scriptRunning = false;
 
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}
+
+docReady(function() {
+    // set up the event handlers
+  document.getElementById("clear").addEventListener("click", function() {
+    fetchPost('clear');
+  });
+
+  document.getElementById("flag").addEventListener("click", function() {
+    fetchPost('flag');
+  });
+
+  document.getElementById("spiral").addEventListener("click", function() {
+    fetchPost('spiral');
+  });
+
+  document.getElementById("diagonal").addEventListener("click", function() {
+    fetchPost('diagonal');
+  });
+});
+
+
+function showMessage(m){
+  var o = document.getElementById("output");
+  o.value = m + '\n' + o.value;
+}
+
+
 // barebones XMLHttpRequest
 function doPost(){
   var formData = new FormData();
@@ -16,6 +52,7 @@ function doPost(){
 function fetchPost(c){
   if (scriptRunning){
     console.log('unable to start a new command, a script is running');
+    showMessage('script running, please wait');
     return;
   }
   scriptRunning = true;
@@ -30,5 +67,6 @@ function fetchPost(c){
     console.log(data);
     scriptRunning = false;
     console.log('reset scriptRunning');
+    showMessage('script complete');
   })
 }

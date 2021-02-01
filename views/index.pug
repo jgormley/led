@@ -2,4 +2,9 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  button(id='clear') Clear
+  button(id='flag') Flag
+  button(id='spiral') Spiral
+  button(id='diagonal') Diagonal
+  br
+  textarea(id='output', rows='5', cols='42')
